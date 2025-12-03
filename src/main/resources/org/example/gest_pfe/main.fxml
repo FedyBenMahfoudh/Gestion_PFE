@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.gest_pfe.controllers.MainController" >
+        <!-- Top Menu Bar -->
+        <top>
+            <MenuBar>
+                <Menu text="File">
+                    <MenuItem text="Exit" />
+                </Menu>
+                <Menu text="Help">
+                    <MenuItem text="About" />
+                </Menu>
+            </MenuBar>
+        </top>
+
+        <!-- Center Tabs -->
+        <center>
+            <TabPane fx:id="mainTabs" tabClosingPolicy="UNAVAILABLE">
+
+                <!-- Dashboard -->
+                <Tab text="Dashboard">
+                    <AnchorPane>
+                        <Label text="Welcome to the PFE Management System"
+                               layoutX="40" layoutY="40"
+                               style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+                    </AnchorPane>
+                </Tab>
+
+                <!-- Étudiants -->
+                <Tab text="Étudiants">
+                    <fx:include source="etudiantsTab.fxml"/>
+                </Tab>
+
+                <!-- Encadrants -->
+                <Tab text="Encadrants">
+                    <AnchorPane>
+                        <VBox spacing="15">
+                            <padding>
+                                <Insets top="20" right="20" bottom="20" left="20"/>
+                            </padding>
+
+                            <Label text="Gestion des Encadrants" style="-fx-font-size: 18;"/>
+                            <TableView fx:id="tableEncadrants" prefHeight="300"/>
+
+                            <HBox spacing="10">
+                                <Button text="Ajouter"/>
+                                <Button text="Modifier"/>
+                                <Button text="Supprimer"/>
+                            </HBox>
+                        </VBox>
+                    </AnchorPane>
+                </Tab>
+
+                <!-- Projets -->
+                <Tab text="Projets">
+                    <AnchorPane>
+                        <VBox spacing="15">
+                            <padding>
+                                <Insets top="20" right="20" bottom="20" left="20"/>
+                            </padding>
+
+                            <Label text="Gestion des Projets" style="-fx-font-size: 18;"/>
+                            <TableView fx:id="tableProjets" prefHeight="300"/>
+
+                            <HBox spacing="10">
+                                <Button text="Ajouter"/>
+                                <Button text="Assigner Étudiant"/>
+                                <Button text="Assigner Encadrant"/>
+                                <Button text="Supprimer"/>
+                            </HBox>
+                        </VBox>
+                    </AnchorPane>
+                </Tab>
+
+                <!-- Stages -->
+                <Tab text="Stages">
+                    <AnchorPane>
+                        <VBox spacing="15">
+                            <padding>
+                                <Insets top="20" right="20" bottom="20" left="20"/>
+                            </padding>
+
+                            <Label text="Gestion des Stages" style="-fx-font-size: 18;"/>
+                            <TableView fx:id="tableStages" prefHeight="300"/>
+
+                            <HBox spacing="10">
+                                <Button text="Ajouter"/>
+                                <Button text="Modifier"/>
+                                <Button text="Supprimer"/>
+                            </HBox>
+                        </VBox>
+                    </AnchorPane>
+                </Tab>
+
+                <!-- Entreprises -->
+                <Tab text="Entreprises">
+                    <AnchorPane>
+                        <VBox spacing="15">
+                            <padding>
+                                <Insets top="20" right="20" bottom="20" left="20"/>
+                            </padding>
+
+                            <Label text="Gestion des Entreprises" style="-fx-font-size: 18;"/>
+                            <TableView fx:id="tableEntreprises" prefHeight="300"/>
+
+                            <HBox spacing="10">
+                                <Button text="Ajouter"/>
+                                <Button text="Modifier"/>
+                                <Button text="Supprimer"/>
+                            </HBox>
+                        </VBox>
+                    </AnchorPane>
+                </Tab>
+
+                <!-- Rapports -->
+                <Tab text="Rapports">
+                    <AnchorPane>
+                        <VBox spacing="15">
+                            <padding>
+                                <Insets top="20" right="20" bottom="20" left="20"/>
+                            </padding>
+
+                            <Label text="Gestion des Rapports" style="-fx-font-size: 18;"/>
+                            <TableView fx:id="tableRapports" prefHeight="300"/>
+
+                            <HBox spacing="10">
+                                <Button text="Déposer Rapport"/>
+                                <Button text="Télécharger PDF"/>
+                                <Button text="Supprimer"/>
+                            </HBox>
+                        </VBox>
+                    </AnchorPane>
+                </Tab>
+
+                <!-- Soutenances -->
+                <Tab text="Soutenances">
+                    <AnchorPane>
+                        <VBox spacing="15">
+                            <padding>
+                                <Insets top="20" right="20" bottom="20" left="20"/>
+                            </padding>
+
+                            <Label text="Planification des Soutenances" style="-fx-font-size: 18;"/>
+                            <TableView fx:id="tableSoutenances" prefHeight="300"/>
+
+                            <HBox spacing="10">
+                                <Button text="Planifier"/>
+                                <Button text="Modifier Date"/>
+                                <Button text="Supprimer"/>
+                            </HBox>
+                        </VBox>
+                    </AnchorPane>
+                </Tab>
+
+                <!-- Jury -->
+                <Tab text="Jury">
+                    <AnchorPane>
+                        <VBox spacing="15">
+                            <padding>
+                                <Insets top="20" right="20" bottom="20" left="20"/>
+                            </padding>
+
+                            <Label text="Gestion des Jurys" style="-fx-font-size: 18;"/>
+                            <TableView fx:id="tableJury" prefHeight="300"/>
+
+                            <HBox spacing="10">
+                                <Button text="Créer Jury"/>
+                                <Button text="Modifier"/>
+                                <Button text="Supprimer"/>
+                            </HBox>
+                        </VBox>
+                    </AnchorPane>
+                </Tab>
+
+            </TabPane>
+        </center>
+
+    </BorderPane>
