@@ -27,12 +27,8 @@
             <TabPane fx:id="mainTabs" tabClosingPolicy="UNAVAILABLE">
 
                 <!-- Dashboard -->
-                <Tab text="Dashboard">
-                    <AnchorPane>
-                        <Label text="Welcome to the PFE Management System"
-                               layoutX="40" layoutY="40"
-                               style="-fx-font-size: 20; -fx-font-weight: bold;"/>
-                    </AnchorPane>
+                <Tab text="Accueil">
+                    <fx:include source="welcome.fxml" />
                 </Tab>
 
                 <!-- Étudiants -->

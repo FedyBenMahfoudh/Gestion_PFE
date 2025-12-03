@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml">
+
+    <!-- ==================== HEADER ==================== -->
+    <top>
+        <HBox spacing="10" style="-fx-background-color: #000411;">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <children>
+                <!-- LEFT IMAGE -->
+                <ImageView fitHeight="50" preserveRatio="true">
+                    <image>
+                        <Image url="@img/Tunisie.png"/>
+                    </image>
+                </ImageView>
+
+                <!-- Spacer to push right image to the far right -->
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <!-- RIGHT IMAGE -->
+                <ImageView fitHeight="50" preserveRatio="true">
+                    <image>
+                        <Image url="@img/isi.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </HBox>
+    </top>
+
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <center>
+        <HBox spacing="40" alignment="CENTER" style="-fx-background-color: #E1EFE6">
+            <padding>
+                <Insets top="40" right="40" bottom="40" left="40"/>
+            </padding>
+
+            <!-- HERO IMAGE -->
+            <ImageView fitHeight="350" preserveRatio="true">
+                <image>
+                    <!-- Replace with your hero image -->
+                    <Image url="@img/graduat.png"/>
+                </image>
+            </ImageView>
+
+            <!-- LOGIN FORM -->
+            <VBox spacing="15" alignment="CENTER_LEFT">
+                <children>
+                    <Label text="Login"
+                           style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+
+                    <Label text="Email"/>
+                    <TextField fx:id="username" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="400.0" style="-fx-border-radius: 20px; -fx-background-radius: 20px;"/>
+
+                    <Label text="Password"/>
+                    <PasswordField fx:id="passwordField" promptText="Enter your password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="400.0" style="-fx-border-radius: 20px; -fx-background-radius: 20px;" />
+
+                    <Button text="Sign In"
+                            prefWidth="250"
+                            style="-fx-background-color: #0066cc; -fx-text-fill: white;"/>
+
+                </children>
+            </VBox>
+
+        </HBox>
+    </center>
+
+</BorderPane>
