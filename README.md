@@ -1,4 +1,4 @@
-# gest_pfe — Gestion PFE & Stages
+# — Gestion PFE & Stages
 JavaFX desktop application for managing end-of-studies projects (PFE) and internships (stages).
 
 At the moment, the project contains a complete **Étudiants** module (CRUD + search) backed by **PostgreSQL**, and UI scaffolding (tabs/screens) for other modules (Encadrants, Projets, Stages, Entreprises, Rapports, Soutenances, Jury).
