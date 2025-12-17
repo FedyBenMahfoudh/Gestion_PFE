@@ -12,6 +12,9 @@ public class Etudiant {
     private String specialite;
     private String parcours;
 
+    public Etudiant() {
+    }
+
     public Etudiant(int matricule, String prenom, String nom, LocalDate dateNaissance, String email, String specialite, String parcours) {
         this.matricule = matricule;
         this.prenom = prenom;

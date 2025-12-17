@@ -9,15 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EtudiantService {
-    public List<Etudiant> getAllEtudiants(){
+    public List<Etudiant> getAllEtudiants() {
         List<Etudiant> etudiants = new ArrayList<>();
-        try{
+        try {
             Connection conn = Database.getConnection();
             Statement stmt = conn.createStatement();
             String query = "SELECT matricule, prenom, nom, date_naissance, email, specialite, parcours FROM etudiants";
             ResultSet rs = stmt.executeQuery(query);
 
-            while(rs.next()){
+            while (rs.next()) {
                 Etudiant temp = new Etudiant(
                         rs.getInt("matricule"),
                         rs.getString("prenom"),
@@ -62,5 +62,72 @@ public class EtudiantService {
         } catch (SQLException err) {
             throw new RuntimeException("Erreur SQL : " + err.getMessage());
         }
+    }
+
+    public boolean updateEtudiant(Etudiant e) throws Exception {
+        String query = "UPDATE etudiants " +
+                "SET nom = ?, prenom = ?, date_naissance = ?, email = ?, specialite = ?, parcours = ? " +
+                "WHERE matricule = ?";
+
+
+        try {
+            Connection conn = Database.getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, e.getNom());
+            ps.setString(2, e.getPrenom());
+            ps.setDate(3, Date.valueOf(e.getDateNaissance()));
+            ps.setString(4, e.getEmail());
+            ps.setString(5, e.getSpecialite());
+            ps.setString(6, e.getParcours());
+            ps.setInt(7, e.getMatricule());
+            return ps.executeUpdate() > 0;
+        } catch (Exception ex) {
+            System.out.println("Erreur de connexion a la base de données");
+            ex.printStackTrace();
+            throw new RuntimeException("Erreur lors de la modification : " + ex.getMessage());
+        }
+    }
+
+    public boolean deleteEtudiant(Etudiant e){
+        String query = "DELETE FROM etudiants WHERE matricule = ?";
+
+        try {
+            Connection conn = Database.getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, e.getMatricule());
+            return ps.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            System.out.println("Erreur de connexion a la base de données");
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public Etudiant getEtudiant(int matricule){
+        String query = "SELECT * FROM etudiants WHERE matricule = ?";
+
+        try {
+            Connection conn = Database.getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, matricule);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Etudiant temp = new Etudiant(
+                        rs.getInt("matricule"),
+                        rs.getString("prenom"),
+                        rs.getString("nom"),
+                        rs.getDate("date_naissance").toLocalDate(),
+                        rs.getString("email"),
+                        rs.getString("specialite"),
+                        rs.getString("parcours")
+                );
+                return temp;
+            }
+        }catch (Exception ex) {
+            System.out.println("Erreur de connexion a la base de données");
+            ex.printStackTrace();
+        }
+
+        return null;
     }
 }

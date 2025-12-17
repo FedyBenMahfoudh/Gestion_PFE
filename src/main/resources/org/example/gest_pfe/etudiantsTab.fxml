@@ -11,7 +11,11 @@
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
 
-    <Label text="Gestion des Étudiants" style="-fx-font-size: 18;"/>
+    <HBox spacing="10">
+        <Label text="Gestion des Étudiants" style="-fx-font-size: 18;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Ajouter" onAction="#handleAjouter"/>
+    </HBox>
     <TableView fx:id="tableEtudiants" prefHeight="300">
         <columns>
             <TableColumn fx:id="colMatricule" text="Matricule"/>
@@ -21,13 +25,26 @@
             <TableColumn fx:id="colEmail" text="Email"/>
             <TableColumn fx:id="colSpecialite" text="Spécialité"/>
             <TableColumn fx:id="colParcours" text="Parcours"/>
+            <TableColumn fx:id="colActions" text="Actions" prefWidth="160"/>
         </columns>
     </TableView>
 
-    <HBox spacing="10">
-        <Button text="Ajouter" onAction="#handleAjouter"/>
-        <Button text="Modifier" onAction="#handleModifier"/>
-        <Button text="Supprimer" onAction="#handleSupprimer"/>
-        <Button text="Rechercher" onAction="#handleRechercher"/>
+
+    <HBox>
+        <GridPane hgap="10" vgap="12">
+            <Label text="Matricule:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="matriculeField"
+                       promptText="Chercher par matricule"
+                       GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        </GridPane>
+        <Region HBox.hgrow="ALWAYS"/>
+        <HBox spacing="5">
+            <Button text="Rechercher" onAction="#handleRechercher"/>
+            <Button text="Cancel" onAction="#handleCancel"/>
+        </HBox>
     </HBox>
+    <Label fx:id="errorLabel"
+           textFill="red"
+           style="-fx-font-size: 12;"
+           visible="false"/>
 </VBox>
